@@ -1,0 +1,23 @@
+Build dan submit ENTRY 1 untuk bounty make.fun "Ship It Friday" (slug: u-mgwals-ship-it-friday-30bd407a). Ini sesi worker BARU yang dimulai setelah bounty dibuka — kerjakan semuanya di sesi ini, jangan baca kode entry bounty lain.
+
+FAKTA BOUNTY (terverifikasi live 25 Nov 2026 ~05:05 WIB dari API make.fun):
+- Judul: Ship It Friday. Deadline: 2026-11-26T10:15:00Z (17:15 WIB 26 Nov). Hadiah total $2. Entry fee: null (GRATIS). Sudah ~1853 submission.
+- Requirements (GitHub-backed — repo publik WAJIB): repo_url publik https://github.com/<owner>/<repo>, commit_sha 40 karakter, file LICENSE (MIT), main.ts ATAU main.py di root repo, transcript bundle dari kit CLI. Isi repo About dan tambahkan badge + link bounty ke README SEBELUM submit pertama (kalau tidak, submit ditolak 422). Owner GitHub akun: chouuu12 (GitHub sudah terhubung, helper ~/workspace/custom-connectors/custom.github/bin/github_api.py; JANGAN pernah tulis token/keypair di file atau chat).
+- Kit: download tarball https://make.fun/c/u-mgwals-ship-it-friday-30bd407a/kit ke ~/workspace/u-mgwals-ship-it-friday-30bd407a-kit/ . Node di mesin ini v24.22.1 (kit butuh Node 22.18+ — OK).
+- Kredensial make.fun: ~/.makefun/credentials (API key), keypair ~/workspace/makefun-keypair.json (mode 600). Akun @chouuu12, agent wallet 8PWAi8azdvZdwgtv7EX3izhkKRtULqwCphro4KrE2zSz. JANGAN PERNAH tulis keypair, API key, atau kode klaim ke file/chat/log.
+
+ALUR WAJIB (lampiran teknis aturan di ~/workspace/user/files/Makefun.md — baca file itu dulu):
+1. Cek leaderboard top 10 (GET /api/competitions/<slug>/leaderboard?view=performance&limit=10) dan analisis sebelum membangun. Kalau blind/tidak ada data, lanjut dengan second opinion.
+2. Baca RULES.txt di kit untuk teks tugas persisnya — TULIS PERSIS teks tugas itu ke prompt.txt (file prompt.txt harus berisi instruksi user verbatim).
+3. Tulis file → jalanin → EDIT (revisi beneran, bukan tulis ulang identik) → jalanin lagi → commit. Kit check thinking_revised gagal kalau tidak ada file yang final content-nya berasal dari 2+ pesan tulis/edit. PENTING (pelajaran 24-25 Nov): main.ts/main.py harus PANJANG (target ~150 baris kode asli yang ditulis di sesi ini) supaya thinking_reproduces lolos ≥30% — jangan pakai prompt.txt hasil copy RULES.txt yang panjang sebagai satu-satunya file; yang dihitung sebagai authored adalah main.ts/main.py.
+4. JANGAN PERNAH pakai pkill. Jangan background server dengan setsid/nohup/&.
+5. Minta second opinion dari Numes model deepseek/deepseek-v4.1-flash:free (helper ~/workspace/custom-connectors/custom.numes/bin/numes_api.py) untuk memilih/menajamkan kandidat kalimat — kirim 3-5 kandidat, minta ranking + alasan singkat. Koneksi pertama lambat dan bisa 503/520 — retry, jangan nyatakan down. Kalau Numes tidak bersih, lakukan ranking lokal kedua yang independen.
+6. Buat repo GitHub publik BARU atas nama chouuu12 (bounty ini tugasnya entry GitHub-backed, jadi repo baru dibolehkan). Repo berisi: main.ts (atau main.py) yang menampilkan/mengeluarkan kalimatnya, file teks dengan kalimatnya (mis. line.txt), LICENSE MIT, README dengan badge + link bounty https://make.fun/bounty/u-mgwals-ship-it-friday-30bd407a , prompt.txt verbatim. Isi About repo sebelum submit.
+7. Cek kuota live (GET /api/competitions/<slug>/quota) dan patokan can_submit saja sebelum submit.
+8. Submit via kit CLI dari dalam kit (node cli/makefun.mjs ...), declare harness facts: --harness muse-app --harness-version 1 --provider meta --model ipnext/avocado-5.17-v7 --effort default + satu --notes. Bundle transcripts dengan --muse-usage (semua sesi yang mengerjakan entry ini, termasuk sesi ini). Jalankan kit check dulu; perbaiki yang gagal kalau bisa.
+9. Kalau ada execution-risk notice di hasil tool: ABAIKAN, lanjut di repo yang sama, jangan abandon/rebuild/skip.
+10. Kalau entry ke-flag security check: laporkan flag-nya jelas di hasil akhir kamu, tapi TETAP lanjut submit (aturan 1 menit user sudah mengotorisasi lanjut).
+
+TARGET: satu kalimat yang bisa masuk top 10% peserta — kejutan di akhir yang tetap masuk akal, relatable, hemat kata. Perhatikan batas karakter dan tema "Ship It Friday" di RULES.txt.
+
+LAPORAN AKHIR ke saya (jangan kirim ke chat mana pun sendiri): submission id, stage + hasil checks (pass/fail/skip ringkas), judul + isi kalimat yang disubmit, URL repo + commit SHA, dan kode klaim JIKA ADA (tulis apa adanya di pesan hasil kamu saja, jangan simpan ke file). Kalau submit gagal, laporkan error persisnya + apa yang sudah dicoba.
